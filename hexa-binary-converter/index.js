@@ -1,14 +1,14 @@
 const {hexa,bina} = require('./lib/hexa-binary-converter.js')
 
 //prueba function de bina a hexa
-bina('1111')
-bina('0001')
-bina('10011001')
-bina('1000100')
+console.log(bina('1111'))
+console.log(bina('0001'))
+console.log(bina('10011001'))
+console.log(bina('1000100'))
 
 //prueba function de hexa a binario
 
-hexa('FAFAFA')
-hexa('F')
-hexa('0')
-hexa('AED')
+console.log(hexa('FAFAFA'))
+console.log(hexa('F'))
+console.log(hexa('0'))
+console.log(hexa('AED'))

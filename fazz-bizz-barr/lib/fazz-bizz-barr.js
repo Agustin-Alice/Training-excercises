@@ -12,8 +12,6 @@ function multi(integer){
     if(integer === 0){
         resultado = integer
     }
-    console.log(resultado)
-
 }
 
 module.exports ={
