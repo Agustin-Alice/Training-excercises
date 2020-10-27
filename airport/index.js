@@ -1,6 +1,6 @@
 const {Scheduler} = require('.lib/scheduler.js')
 
-
+var prueba = false
 var menu="MENU\n"
 menu+="1.Consultar un horario\n"
 menu+="2.Agendar un vuelo\n"
@@ -16,16 +16,36 @@ do{
     var option = parseInt(prompt(menu));
     switch(option){
         case 1:
-            Schedule();
+            // moment().format('dddd/MM HH:mm')
+            time = date.parse(prompt("Ingrese el horario que quiere consultar, en formato dddd/MM HH:mm",""))
+            horarios.forEach(function compare(element){
+                if(element != time){
+                    document.write("El horario que usted consulto esta libre")
+                    document.write(time)
+                    prueba = true
+                }
+                else{
+                    prueba = false
+                    document.write("El horario por el que consulto esta ocupado")   
+                }
+            })            
+            //Schedule();
             break;
         case 2:
-            CouldScheduleAt(fecha);
+            time = prompt("Ingrese el horario que quiere agendar, en formato","")
+            if(prueba = false){
+                document.write("Primero realice la consulta antes de agendar")
+            }
+            else{
+                
+            }
+            //CouldScheduleAt(fecha);
             break;
         case 3:
-            UnscheduleAt(fecha);
+            //UnscheduleAt(fecha);
             break;
         case 4:
-            NextAvalibleSchedule(fecha);
+            //NextAvalibleSchedule(fecha);
             break;
         case 5:
             document.write("4. Cerrando")
@@ -35,7 +55,6 @@ do{
             break;
         default:
             document.write("Opcion no disponible")
-            //break;
 
     }
 
