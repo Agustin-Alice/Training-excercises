@@ -19,12 +19,12 @@ do{
     switch(option){
         case 1:
             // moment().format('dddd/MM HH:mm')
-            time = moment(prompt("Ingrese el horario que quiere consultar, en formato DD/MM HH:mm","")).format('DD/MM/YYYY HH:mm')
+            time = moment(prompt("Ingrese el horario que quiere consultar, en formato DD/MM/YYYY HH:mm","")).format('DD/MM/YYYY HH:mm')
             pista.CouldScheduleAt(time)            
             //Schedule();
             break;
         case 2:
-            time = moment(prompt("Ingrese el horario que quiere agendar, en formato DD/MM HH:mm","")).format('DD/MM/YYYY HH:mm')
+            time = moment(prompt("Ingrese el horario que quiere agendar, en formato DD/MM/YYYY HH:mm","")).format('DD/MM/YYYY HH:mm')
             pista.CouldScheduleAt(time)
             //CouldScheduleAt(fecha);
             break;
@@ -34,7 +34,7 @@ do{
             //UnscheduleAt(fecha);
             break;
         case 4:
-            //NextAvalibleSchedule(fecha);
+            pista.NextAvalibleSchedule();
             break;
         case 5:
             console.log(this.horarios)
