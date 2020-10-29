@@ -1,7 +1,6 @@
 const{Scheduler} = require('/lib/scheduler.js')
-const moment = require('moment');
 
-debugger;
+
 var pista = new Scheduler();
 var menu="MENU\n"
 menu+="1.Consultar un horario\n"
@@ -31,13 +30,10 @@ do{
             break;
         case 3:
             pista.UnscheduleAt()
-                    
-
             //prompt mostrar el array y el indice que quiera borrar lo borre
             //UnscheduleAt(fecha);
             break;
         case 4:
-            
             //NextAvalibleSchedule(fecha);
             break;
         case 5:
@@ -48,7 +44,5 @@ do{
             break;
         default:
             console.log("Opcion no disponible\n")
-
     }
-
 }while(option != 6)

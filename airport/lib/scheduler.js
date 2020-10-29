@@ -1,4 +1,4 @@
-const moment = require("moment");
+var moment = require('moment');
 
 /*function compare(element){
     if(element != time){
