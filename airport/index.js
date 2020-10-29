@@ -1,61 +1,54 @@
-const {Scheduler} = require('.lib/scheduler.js')
+const{Scheduler} = require('/lib/scheduler.js')
+const moment = require('moment');
 
-var prueba = false
+debugger;
+var pista = new Scheduler();
 var menu="MENU\n"
 menu+="1.Consultar un horario\n"
 menu+="2.Agendar un vuelo\n"
 menu+="3.Desagendar un vuelo\n"
 menu+="4.Pedir el proximo horario disponible\n"
-menu+="5.Salir\n"
-menu+="6.Listar\n"
+menu+="5.Mostrar vuelos programados\n"
+menu+="6.Salir\n"
+
+
 
 var option = 0;
-var time = 0;
-
+let time = ""
 do{
     var option = parseInt(prompt(menu));
     switch(option){
         case 1:
             // moment().format('dddd/MM HH:mm')
-            time = date.parse(prompt("Ingrese el horario que quiere consultar, en formato dddd/MM HH:mm",""))
-            horarios.forEach(function compare(element){
-                if(element != time){
-                    document.write("El horario que usted consulto esta libre")
-                    document.write(time)
-                    prueba = true
-                }
-                else{
-                    prueba = false
-                    document.write("El horario por el que consulto esta ocupado")   
-                }
-            })            
+            time = moment(prompt("Ingrese el horario que quiere consultar, en formato DD/MM HH:mm","")).format('DD/MM/YYYY HH:mm')
+            pista.CouldScheduleAt(time)            
             //Schedule();
             break;
         case 2:
-            time = prompt("Ingrese el horario que quiere agendar, en formato","")
-            if(prueba = false){
-                document.write("Primero realice la consulta antes de agendar")
-            }
-            else{
-                
-            }
+            time = moment(prompt("Ingrese el horario que quiere agendar, en formato DD/MM HH:mm","")).format('DD/MM/YYYY HH:mm')
+            pista.CouldScheduleAt(time)
             //CouldScheduleAt(fecha);
             break;
         case 3:
+            pista.UnscheduleAt()
+                    
+
+            //prompt mostrar el array y el indice que quiera borrar lo borre
             //UnscheduleAt(fecha);
             break;
         case 4:
+            
             //NextAvalibleSchedule(fecha);
             break;
         case 5:
-            document.write("4. Cerrando")
+            console.log(this.horarios)
             break;
         case 6:
-            document.write(horarios)
+            console.log("4. Cerrando\n")
             break;
         default:
-            document.write("Opcion no disponible")
+            console.log("Opcion no disponible\n")
 
     }
 
-}while(option != 5)
+}while(option != 6)
