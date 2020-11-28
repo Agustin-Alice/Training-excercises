@@ -1,7 +1,6 @@
 const{Scheduler} = require('./lib/scheduler.js')
 const readline = require('readline');
 var moment = require('moment');
-//const inquirer = require('inquirer');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -24,10 +23,29 @@ let time = ""
             switch(option){
                 case "1":    
                 // ('dddd/MM HH:mm')
-                    rl.question("Ingrese el horario que quiere consultar, en formato DD MM YYYY HH mm\n",(element)=>{
-                        time = moment(element).format('DD MM YYYY HH:mm')
-                        pista.CouldScheduleAt(time);
-                    })
+                function ask (){
+                    return new Promise((resolve,reject)=>{
+                        rl.question("Ingrese el horario que quiere consultar, en formato DD MM YYYY HH mm\n",(element)=>resolve(element));
+                    });
+                }
+                ask()
+                .then((result)=>{
+                  time = moment(result,"DD MM YYYY HH mm");
+                  time.format("DD MM YYYY HH:mm")
+                  pista.CouldScheduleAt(time)
+                })
+//                .then((result) =>{
+ 
+                
+                    //    pista.CouldScheduleAt(result)
+//              })
+                   //time = rl.question("Ingrese el horario que quiere consultar, en formato DD MM YYYY HH mm\n",(element)=>{
+                    //time = moment(element,"DD MM YYYY HH mm").format('DD MM YYYY HH mm')
+                    //pista.CouldScheduleAt(element)
+                  // })
+                    //time =>{
+                       // pista.CouldScheduleAt(time);
+                   // } "DD MM YYYY HH mm"
                      //mostrar el horario, quiere hacer otra cosa, 
                     break;
                 case "2":    

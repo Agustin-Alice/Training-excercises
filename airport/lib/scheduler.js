@@ -9,15 +9,16 @@ class Scheduler {
     // returns true if there’s room to schedule at ‘time’
     CouldScheduleAt(fecha){
         //hay que hacer que sean +-10 minutos
-        this.horarios.forEach((element) => {
-            if(moment(fecha).subtract(10,"m") < moment(element).add(10,"m") && moment(fecha).add(10,"m") > moment(element).subtract(10,"m") || moment(element).subtract(10,"m") < moment(fecha).add(10,"m") && moment(element).add(10,"m") > moment(fecha).subtract(10,"m")){
-             document.write("El horario por el que consulto esta ocupado");
-            }
-            else{
-                document.write("El horario por el que consulto esta libre")
-            }
-        })
-    }
+            this.horarios.forEach((element) => {
+                if(this.horarios != [] || moment([fecha]).subtract(10,'m') < oment([element]).add(10,'m') && moment([fecha]).add(10,'m') > moment([element]).subtract(10,'m') || moment([element]).subtract(10,'m') < moment([fecha]).add(10,'m') && moment([element]).add(10,'m') > moment([fecha]).subtract(10,'m')){
+                    console.log("El horario por el que consulto esta ocupado");
+                }
+                else{
+                    console.log("El horario por el que consulto esta libre")
+                }
+            })
+        }
+    
        
     // returns true if we successfully scheduled
 
