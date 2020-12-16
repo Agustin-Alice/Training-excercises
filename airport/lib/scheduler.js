@@ -7,34 +7,40 @@ class Scheduler {
 
     }
     // returns true if there’s room to schedule at ‘time’
-    CouldScheduleAt(fecha){
-        //hay que hacer que sean +-10 minutos
-            this.horarios.forEach((element) => {
-                if(this.horarios != [] || moment([fecha]).subtract(10,'m') < oment([element]).add(10,'m') && moment([fecha]).add(10,'m') > moment([element]).subtract(10,'m') || moment([element]).subtract(10,'m') < moment([fecha]).add(10,'m') && moment([element]).add(10,'m') > moment([fecha]).subtract(10,'m')){
-                    console.log("El horario por el que consulto esta ocupado");
+    CouldScheduleAt(fecha){    
+        //hay que hacer que sean +-10 minutos        
+        if(this.horarios.length === 0){
+            console.log("El horario por el que consulto esta libre")
+        }
+        else{
+            this.horarios.forEach((element) => {      
+                if(moment(fecha).subtract(10,'m') < moment(element).add(10,'m') && moment(fecha).add(10,'m') > moment(element).subtract(10,'m') || moment(element).subtract(10,'m') < moment(fecha).add(10,'m') && moment(element).add(10,'m') > moment(fecha).subtract(10,'m')){
+                   console.log("El horario por el que consulto esta ocupado");
                 }
                 else{
-                    console.log("El horario por el que consulto esta libre")
+                   console.log("El horario por el que consulto esta libre")
                 }
             })
-        }
+        }      
+    }
     
        
     // returns true if we successfully scheduled
 
     ScheduleAt(fecha){
-        if(this.horarios === []){
-        document.write("El horario por el que consulto se cargo correctamente")
-        this.horarios.push(fecha)    
+        if(this.horarios.length === 0){
+            this.horarios.push(fecha)
+            console.log("El horario por el que consulto se cargo correctamente")
+            console.log(this.horarios)
         }
         else{
             this.horarios.forEach((element) => {
                 if(moment(fecha).subtract(10,"m") < moment(element).add(10,"m") && moment(fecha).add(10,"m") > moment(element).subtract(10,"m") || moment(element).subtract(10,"m") < moment(fecha).add(10,"m") && moment(element).add(10,"m") > moment(fecha).subtract(10,"m")){
-                    document.write("El horario por el que consulto esta ocupado");
+                    console.log("El horario por el que consulto esta ocupado");
                 }
                 else{
                     this.horarios.push(fecha)
-                    document.write("El horario por el que consulto se cargo correctamente")
+                    console.log("El horario por el que consulto se cargo correctamente")
                 }
             })
         }        
@@ -42,12 +48,13 @@ class Scheduler {
     
     // Choose an available time to schedule at, and return that time
     Schedule(){
-        let tiempo_actual = moment().format('DD/MM/YYYY HH:mm')
+        let tiempo_actual = moment()
+        tiempo_actual = moment(tiempo_actual,'DD-MM-YYYY HH:mm')
         let lugar = ""
         for(let i = 0; lugar!= "aprobado"; i++)
             if(moment(tiempo_actual).subtract(10,"m") < moment(this.horarios[i]).add(10,"m") && moment(tiempo_actual).add(10,"m") < moment(this.horarios[i]).subtract(10,"m") || moment(this.horarios[i]).subtract(10,"m") < moment(tiempo_actual).add(10,"m") && moment(this.horarios[i]).add(10,"m") < moment(tiempo_actual).subtract(10,"m")){
                 lugar = "aprobado"
-                document.write(tiempo_actual + "es el proximo horario disponible")
+                console.log(tiempo_actual + "es el proximo horario disponible")
             }
                 else{
                 tiempo_actual = moment(tiempo_actual).add(10,"m")
@@ -59,12 +66,12 @@ class Scheduler {
     
     // returns true if we successfully unscheduled something
     UnscheduleAt(fecha){
-        if(this.horarios === []){
-            document.write("No hay horarios agendados\n")
+        if(this.horarios.length === 0){
+            console.log("No hay horarios agendados\n")
         }
         else{            
             this.horarios.filter(fechas => fechas[fecha])
-            document.write("Se desagendo el vuelo correctamente\n")
+            console.log("Se desagendo el vuelo correctamente\n")
             
         }
         
