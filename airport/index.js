@@ -71,7 +71,7 @@ repetidor();
                         function ask(){
                             return new Promise((resolve,reject)=>{
                                 rl.question("Ingrese la posicion del horario que quiere desagendar\n",(element)=>resolve(element))
-                                });
+                            });
                         }
                         ask()
                         .then((result)=>{
@@ -84,11 +84,9 @@ repetidor();
                     case "4":
                         pista.Schedule();
                         repetidor()
-                        //rl.close();
                     case "5":
                         console.log(pista.horarios)
                         repetidor()
-                        //rl.close();
                         break;
                     default:
                         console.log("Opcion no disponible\n")

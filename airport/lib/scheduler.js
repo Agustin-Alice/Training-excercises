@@ -49,12 +49,12 @@ class Scheduler {
     // Choose an available time to schedule at, and return that time
     Schedule(){
         let tiempo_actual = moment()
-        tiempo_actual = moment(tiempo_actual,'DD-MM-YYYY HH:mm')
+        tiempo_actual = moment(tiempo_actual,'DD-MM-YYY HH:mm')
         let lugar = ""
         for(let i = 0; lugar!= "aprobado"; i++)
             if(moment(tiempo_actual).subtract(10,"m") < moment(this.horarios[i]).add(10,"m") && moment(tiempo_actual).add(10,"m") < moment(this.horarios[i]).subtract(10,"m") || moment(this.horarios[i]).subtract(10,"m") < moment(tiempo_actual).add(10,"m") && moment(this.horarios[i]).add(10,"m") < moment(tiempo_actual).subtract(10,"m")){
                 lugar = "aprobado"
-                console.log(tiempo_actual + "es el proximo horario disponible")
+                console.log(tiempo_actual + " " +"es el proximo horario disponible")
             }
                 else{
                 tiempo_actual = moment(tiempo_actual).add(10,"m")
@@ -70,7 +70,7 @@ class Scheduler {
             console.log("No hay horarios agendados\n")
         }
         else{            
-            this.horarios.filter(fechas => fechas[fecha])
+            this.horarios.splice(fecha-1,1)
             console.log("Se desagendo el vuelo correctamente\n")
             
         }
